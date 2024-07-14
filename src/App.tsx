@@ -7,9 +7,9 @@ import { Dashboard } from './pages/dashboard/dashboard';
 const App: FC = (): ReactElement => {
   return (
     <ThemeProvider theme={customTheme}>
-      <CssBaseline/>
+      <CssBaseline />
       <Dashboard></Dashboard>
     </ThemeProvider>
-  )
-}
+  );
+};
 export default App;
