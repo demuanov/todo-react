@@ -1,8 +1,9 @@
 import React, { FC, ReactElement } from 'react';
 import { Box, Typography, Stack } from '@mui/material';
-import { TaskTitleField } from './interfaces/_taskTitleField';
-import { TaskDescriptionField } from './interfaces/_taskDescriptionField';
-import { TaskDateFiled } from './interfaces/_taskDateField';
+import { TaskTitleField } from './_taskTitleField';
+import { TaskDescriptionField } from './_taskDescriptionField';
+import { TaskDateFiled } from './_taskDateField';
+import { TaskSelectFiled } from './_taskSelectField';
 
 export const CreateTaskFrom: FC = (): ReactElement => {
   return (
@@ -21,6 +22,10 @@ export const CreateTaskFrom: FC = (): ReactElement => {
         <TaskTitleField disabled={false} />
         <TaskDescriptionField />
         <TaskDateFiled />
+        <Stack direction="row" spacing={2}>
+          <TaskSelectFiled items={[]} />
+          <TaskSelectFiled items={[]} />
+        </Stack>
       </Stack>
     </Box>
   );

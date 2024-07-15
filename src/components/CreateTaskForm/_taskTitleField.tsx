@@ -1,8 +1,9 @@
 import React, { FC, ReactElement } from 'react';
 import { TextField } from '@mui/material';
-import { ITextFiled } from './ITextFiled';
+import { ITextFiled } from './interfaces/ITextFiled';
+import PropTypes from 'prop-types';
 
-export const TaskDescriptionField: FC<ITextFiled> = (
+export const TaskTitleField: FC<ITextFiled> = (
   props,
 ): ReactElement => {
   const {
@@ -12,17 +13,20 @@ export const TaskDescriptionField: FC<ITextFiled> = (
 
   return (
     <TextField
-      id="description"
-      name="description"
-      label="Description"
-      placeholder="Description"
-      multiline
-      rows={4}
-      fullWidth
+      id="title"
+      label="Task Title"
+      placeholder="Task Title"
       variant="outlined"
       size="small"
+      name="title"
+      fullWidth
       disabled={disabled}
       onChange={onChange}
     />
   );
+};
+
+TaskTitleField.propTypes = {
+  onChange: PropTypes.func,
+  disabled: PropTypes.bool,
 };
