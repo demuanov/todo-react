@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import { Grid } from '@mui/material';
 import { Profile } from '../profile/profile';
-import { CreateTaskFrom } from '../CreateTaskForm/CreateTaskFrom';
+import { CreateTaskFrom } from '../createTaskForm/CreateTaskFrom';
 
 export const Sidebar: FC = (): ReactElement => {
   return (
