@@ -30,7 +30,7 @@ export const TaskFooter: FC<ITaskFooter> = (
             color="warning"
           />
         }
-        label="in Progress"
+        label="In Progress"
       ></FormControlLabel>
       <Button
         color="success"
@@ -39,13 +39,13 @@ export const TaskFooter: FC<ITaskFooter> = (
         sx={{ color: '#ffffff' }}
         onClick={(e) => onClick(e)}
       >
-        Mark complete
+        Mark Complete
       </Button>
     </Box>
   );
 };
 
 TaskFooter.propTypes = {
-  onChange: PropTypes.func,
   onStatusChange: PropTypes.func,
+  onClick: PropTypes.func,
 };

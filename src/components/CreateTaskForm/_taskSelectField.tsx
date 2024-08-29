@@ -9,7 +9,7 @@ import {
 import { ISelectField } from './interfaces/ISelectField';
 import PropTypes from 'prop-types';
 
-export const TaskSelectFiled: FC<ISelectField> = (
+export const TaskSelectField: FC<ISelectField> = (
   props,
 ): ReactElement => {
   const {
@@ -46,7 +46,7 @@ export const TaskSelectFiled: FC<ISelectField> = (
   );
 };
 
-TaskSelectFiled.propTypes = {
+TaskSelectField.propTypes = {
   onChange: PropTypes.func,
   label: PropTypes.string,
   name: PropTypes.string,

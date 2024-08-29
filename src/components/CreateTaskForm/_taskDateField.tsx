@@ -3,10 +3,10 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TextField } from '@mui/material';
-import { IDateFiled } from './interfaces/IDateFiled';
+import { IDateField } from './interfaces/IDateField';
 import PropTypes from 'prop-types';
 
-export const TaskDateFiled: FC<IDateFiled> = (
+export const TaskDateField: FC<IDateField> = (
   props,
 ): ReactElement => {
   const {
@@ -24,16 +24,16 @@ export const TaskDateFiled: FC<IDateFiled> = (
           value={value}
           disabled={disabled}
           onChange={onChange}
-          /*renderInput={(params) => (
-            <TextField {...params} />
-          )}*/
+          // renderInput={(params) => (
+          //   <TextField {...params} />
+          // )}
         />
       </LocalizationProvider>
     </>
   );
 };
 
-TaskDateFiled.propTypes = {
+TaskDateField.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
   value: PropTypes.instanceOf(Date),

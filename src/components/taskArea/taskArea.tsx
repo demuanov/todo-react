@@ -41,8 +41,7 @@ export const TaskArea: FC = (): ReactElement => {
           xs={10}
           mb={8}
         >
-          <Task></Task>
-          <Task></Task>
+        <Task onStatusChange={(e)=>{console.log(e)}} onClick={(e)=>{console.log(e)}}></Task>
         </Grid>
       </Grid>
     </Grid>

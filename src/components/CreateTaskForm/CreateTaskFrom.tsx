@@ -2,8 +2,8 @@ import React, { FC, ReactElement } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import { TaskTitleField } from './_taskTitleField';
 import { TaskDescriptionField } from './_taskDescriptionField';
-import { TaskDateFiled } from './_taskDateField';
-import { TaskSelectFiled } from './_taskSelectField';
+import { TaskDateField } from './_taskDateField';
+import { TaskSelectField } from './_taskSelectField';
 import { Status } from './enums/Status';
 import { Priority } from './enums/Priority';
 
@@ -23,9 +23,9 @@ export const CreateTaskFrom: FC = (): ReactElement => {
       <Stack sx={{ width: '100%' }} spacing={2}>
         <TaskTitleField disabled={false} />
         <TaskDescriptionField />
-        <TaskDateFiled />
+        <TaskDateField />
         <Stack direction="row" spacing={2}>
-          <TaskSelectFiled
+          <TaskSelectField
             label="Status"
             name="status"
             items={[
@@ -39,7 +39,7 @@ export const CreateTaskFrom: FC = (): ReactElement => {
               },
             ]}
           />
-          <TaskSelectFiled
+          <TaskSelectField
             label="Priority"
             name="priority"
             items={[

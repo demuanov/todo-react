@@ -1,9 +1,9 @@
 import React, { FC, ReactElement } from 'react';
 import { TextField } from '@mui/material';
-import { ITextFiled } from './interfaces/ITextFiled';
+import { ITextField } from './interfaces/ITextField';
 import PropTypes from 'prop-types';
 
-export const TaskTitleField: FC<ITextFiled> = (
+export const TaskTitleField: FC<ITextField> = (
   props,
 ): ReactElement => {
   const {

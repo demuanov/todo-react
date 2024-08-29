@@ -48,7 +48,7 @@ export const Task: FC<ITask> = (props): ReactElement => {
   );
 };
 
-TaskFooter.propTypes = {
+Task.propTypes = {
   title: PropTypes.string,
   date: PropTypes.instanceOf(Date),
   description: PropTypes.string,
