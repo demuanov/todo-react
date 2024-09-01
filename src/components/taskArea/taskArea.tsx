@@ -4,8 +4,20 @@ import { format } from 'date-fns';
 import { TaskCounter } from '../taskCounter/taskCounter';
 import { Status } from '../createTaskForm/enums/Status';
 import { Task } from '../task/task';
+import { useQuery } from 'react-query';
+import { sendApiRequest } from '../../helpers/sendApiRequest';
+import { ITaskApi } from './interfaces/ITaskApi';
 
 export const TaskArea: FC = (): ReactElement => {
+  const { error, isLoading, data, refetch } = useQuery(
+    'tasks',
+    async () => {
+      return await sendApiRequest<ITaskApi[]>(
+        'http://localhost:3200/tasks',
+        'GET',
+      );
+    },
+  );
   return (
     <Grid item md={8} px={4}>
       <Box mb={8} px={4}>
@@ -36,12 +48,19 @@ export const TaskArea: FC = (): ReactElement => {
         </Grid>
         <Grid
           item
-          display="flex"
-          flexDirection="column"
+          display='flex'
+          flexDirection='column'
           xs={10}
           mb={8}
         >
-        <Task onStatusChange={(e)=>{console.log(e)}} onClick={(e)=>{console.log(e)}}></Task>
+          <Task
+            onStatusChange={(e) => {
+              console.log(e);
+            }}
+            onClick={(e) => {
+              console.log(e);
+            }}
+          ></Task>
         </Grid>
       </Grid>
     </Grid>

@@ -4,8 +4,8 @@ import { customTheme } from './theme/customTheme';
 import {
   QueryClient,
   QueryClientProvider,
-} from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+} from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { Dashboard } from './pages/dashboard/dashboard';
 
@@ -16,7 +16,7 @@ const App: FC = (): ReactElement => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={customTheme}>
         <CssBaseline />
-        <Dashboard></Dashboard>
+        <Dashboard />
       </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

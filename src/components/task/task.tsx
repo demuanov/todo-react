@@ -22,12 +22,12 @@ export const Task: FC<ITask> = (props): ReactElement => {
 
   return (
     <Box
-      display="flex"
-      width="100%"
-      justifyContent="flex-start"
-      flexDirection="column"
-      mb={2}
-      p={4}
+      display='flex'
+      width='100%'
+      justifyContent='flex-start'
+      flexDirection='column'
+      mb={4}
+      p={2}
       sx={{
         width: '100%',
         backgroundColor: 'background.paper',
@@ -43,7 +43,7 @@ export const Task: FC<ITask> = (props): ReactElement => {
       <TaskFooter
         onClick={onClick}
         onStatusChange={onStatusChange}
-      ></TaskFooter>
+      />
     </Box>
   );
 };
