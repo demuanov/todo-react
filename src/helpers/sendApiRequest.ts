@@ -1,40 +1,41 @@
-type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
+type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 function returnCorrectRequest(
   method: Method,
-  data: unknown = {}
+  data: unknown = {},
 ): RequestInit {
-  if(method === 'GET') {
+  if (method === 'GET') {
     return {
       method,
       headers: {
-        'Content-Type': 'application/json'
-      }
-    }
+        'Content-Type': 'application/json',
+      },
+    };
   } else {
     return {
       method,
       body: JSON.stringify(data),
       headers: {
-        'Content-Type': 'application/json'
-      }
-    }
+        'Content-Type': 'application/json',
+      },
+    };
   }
 }
 
-export async function sendApiRequest<T> (
+export async function sendApiRequest<T>(
   url: string,
   method: Method,
-  data: unknown = {}
+  data: unknown = {},
 ): Promise<T> {
-  const response = await fetch(url, returnCorrectRequest(method, data))
-
+  const response = await fetch(
+    url,
+    returnCorrectRequest(method, data),
+  );
 
   if (!response.ok) {
-    const message = `An error occured in reqest ${response.status}`
-    throw  new Error(message)
+    const message = `An error occured in reqest ${response.status}`;
+    throw new Error(message);
   }
 
-  return (await response.json()) as Promise<T>
-
+  return (await response.json()) as Promise<T>;
 }
