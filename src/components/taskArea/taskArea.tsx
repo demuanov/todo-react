@@ -4,7 +4,12 @@ import {
   Grid,
   LinearProgress,
 } from '@mui/material';
-import React, { FC, ReactElement } from 'react';
+import React, {
+  FC,
+  ReactElement,
+  useContext,
+  useEffect,
+} from 'react';
 import { format } from 'date-fns';
 import { TaskCounter } from '../taskCounter/taskCounter';
 import { Status } from '../createTaskForm/enums/Status';
@@ -14,8 +19,13 @@ import { sendApiRequest } from '../../helpers/sendApiRequest';
 import { ITaskApi } from './interfaces/ITaskApi';
 import { IUpdateTask } from '../task/interfaces/IUpdateTask';
 import { countTasks } from './helpers/countTasks';
+import { TaskStatusChangedContext } from '../../context';
 
 export const TaskArea: FC = (): ReactElement => {
+  const tasksUpdatedContext = useContext(
+    TaskStatusChangedContext,
+  );
+
   const { error, isLoading, data, refetch } = useQuery(
     'tasks',
     async () => {
@@ -34,6 +44,16 @@ export const TaskArea: FC = (): ReactElement => {
         data,
       ),
   );
+
+  useEffect(() => {
+    refetch();
+  }, [tasksUpdatedContext.updated]);
+
+  useEffect(() => {
+    if (updateTaskMutation.isSuccess) {
+      tasksUpdatedContext.toggle();
+    }
+  }, [updateTaskMutation.isSuccess]);
 
   function onStatusChangeHandler(
     e: React.ChangeEvent<HTMLInputElement>,
@@ -122,11 +142,13 @@ export const TaskArea: FC = (): ReactElement => {
               </Alert>
             )}
 
-            {!error && Array.isArray(data) && (
-              <Alert severity='warning'>
-                No tasks in DB
-              </Alert>
-            )}
+            {!error &&
+              Array.isArray(data) &&
+              data.length === 0 && (
+                <Alert severity='warning'>
+                  No tasks in DB
+                </Alert>
+              )}
 
             {isLoading ? (
               <LinearProgress />

@@ -9,19 +9,26 @@
         "plugin:@typescript-eslint/recommended",
         "prettier"
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "plugins": ["react", "@typescript-eslint", "prettier"],
-    "rules": {},
-    "settings": {
-        "import/resolver": {
-            "typescript": {}
-        }
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "rules": {
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
     }
+  }
 }
