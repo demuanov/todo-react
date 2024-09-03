@@ -13,6 +13,7 @@ import { useMutation, useQuery } from 'react-query';
 import { sendApiRequest } from '../../helpers/sendApiRequest';
 import { ITaskApi } from './interfaces/ITaskApi';
 import { IUpdateTask } from '../task/interfaces/IUpdateTask';
+import { countTasks } from './helpers/countTasks';
 
 export const TaskArea: FC = (): ReactElement => {
   const { error, isLoading, data, refetch } = useQuery(
@@ -46,6 +47,18 @@ export const TaskArea: FC = (): ReactElement => {
     });
   }
 
+  function markCompleteHandler(
+    e:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+  ) {
+    updateTaskMutation.mutate({
+      id,
+      status: Status.completed,
+    });
+  }
+
   return (
     <Grid item md={8} px={4}>
       <Box mb={8} px={4}>
@@ -62,17 +75,38 @@ export const TaskArea: FC = (): ReactElement => {
       >
         <Grid
           item
-          display="flex"
-          flexDirection="row"
-          justifyContent="space-around"
-          alignItems="center"
+          display='flex'
+          flexDirection='row'
+          justifyContent='space-around'
+          alignItems='center'
           md={10}
           xs={12}
           mb={8}
         >
-          <TaskCounter status={Status.todo} count={0} />
-          <TaskCounter status={Status.inProgress} />
-          <TaskCounter status={Status.completed} />
+          <TaskCounter
+            status={Status.todo}
+            count={
+              data
+                ? countTasks(data, Status.todo)
+                : undefined
+            }
+          />
+          <TaskCounter
+            status={Status.inProgress}
+            count={
+              data
+                ? countTasks(data, Status.inProgress)
+                : undefined
+            }
+          />
+          <TaskCounter
+            status={Status.completed}
+            count={
+              data
+                ? countTasks(data, Status.completed)
+                : undefined
+            }
+          />
         </Grid>
         <Grid
           item
@@ -111,8 +145,11 @@ export const TaskArea: FC = (): ReactElement => {
                     priority={task.priority}
                     status={task.status}
                     onStatusChange={onStatusChangeHandler}
+                    onClick={markCompleteHandler}
                   />
-                ) : false;
+                ) : (
+                  false
+                );
               })
             )}
           </>
